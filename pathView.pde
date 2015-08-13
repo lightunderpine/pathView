@@ -7,7 +7,7 @@ int count = 0;
 PFont font;
 
 // 歩行者設定
-int pedestorianNum = 10; // 歩行者の数
+int pedestorianNum = fileNames.length; // 歩行者の数
 Pedestorian[] aPedestorian = new Pedestorian[pedestorianNum];
 
 // Beacon 設定 
@@ -24,6 +24,8 @@ void setup() {
   ellipseMode(CENTER_RADIUS);
   font = createFont("FFScala-32.vlw", 32); 
 
+
+
   // beacon[0] は規定の初期値に設定（テスト用）
   aBeacon[0]=new Beacon(250, 380, "BEACON0");
   aPedestorian[0]=new Pedestorian(20, 200, fileNames[0]);
@@ -38,16 +40,18 @@ void setup() {
     aChart[i] = new Chart(280, 95, aBeacon[i]);
   }
 
-
-
+  //初期画面の描画
+  panelLocate(beaconNum);
 
   //歩行データの準備
   for (int i=1;i<pedestorianNum;i++) {
-    aPedestorian[i] = new Pedestorian(20, 200, fileNames[i]);
+        int sampleX = int(15+random(10));
+            int sampleY = int (190 + random(20));
+    aPedestorian[i] = new Pedestorian(sampleX, sampleY, fileNames[i]);
+    aPedestorian[i].display(color(0, 255, 255));
   }
 
-  //初期画面の描画
-  panelLocate(beaconNum);
+
 }
 
 //-----------------------------------------
