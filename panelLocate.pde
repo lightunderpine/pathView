@@ -8,10 +8,12 @@ void panelLocate(int _beaconNum) {
   // draw chart pannels
   for (int i=0; i< _beaconNum; i++) {
     if (i%2 ==0) {
-      aChart[i].init(mapImage.width + 10, 50*i, aBeacon[i].myColor);
+//      aChart[i].init(mapImage.width + 10, 50*i, aBeacon[i].myColor);
+     aChart[i].init(mapImage.width + 10, 50*i);
     } 
     else {
-      aChart[i].init(mapImage.width + 310, 50*(i-1), aBeacon[i].myColor);
+//      aChart[i].init(mapImage.width + 310, 50*(i-1), aBeacon[i].myColor);
+      aChart[i].init(mapImage.width + 310, 50*(i-1));
     }
   }
 }

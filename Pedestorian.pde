@@ -18,9 +18,9 @@ class Pedestorian {
   // 表示（引数は色）
   void display(color _myColor) {
     myColor = _myColor;
-    strokeWeight(1);
+    strokeWeight(0);
     fill(myColor);
-    ellipse(posX, posY, 3, 3);
+    ellipse(posX, posY, 2, 2);
   }
 
 

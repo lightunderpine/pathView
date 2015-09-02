@@ -10,10 +10,11 @@ class Chart {
     chartWidth = _chartWidth;
     chartHeight = _chartHeight;
     myBeacon = _beacon;
-    prevValue = 0;
+    prevValue = 90;
   }
 
-  void init (int _posX, int _posY, color _myColor) {
+//  void init (int _posX, int _posY, color _myColor) {
+    void init (int _posX, int _posY) {
     posX = _posX;
     posY = _posY;
     pushMatrix();
@@ -22,8 +23,8 @@ class Chart {
     rect(0, 0, chartWidth, chartHeight); //枠線
     line(10, 90, 10, 10);
     line(10, 90, 270, 90);
-    fill(_myColor);
-    text(myBeacon.name, 10, 30);
+    fill(0);
+    text(myBeacon.name, 12, 30);
     fill(255);
     popMatrix();
   }
@@ -33,10 +34,11 @@ class Chart {
     translate(posX, posY);
     stroke(255, 0, 0);
     strokeWeight(2);
-    line(int((_count-1)*0.1)+10, 90-prevValue*10, int(_count*0.1)+10, 90-_value*10);
+    int currentValue = max(90 - _value*15,0);
+    line(int((_count-1)*0.1)+10, prevValue, int(_count*0.1)+10, currentValue);
     stroke(0);
     popMatrix();
-    prevValue = _value;
+    prevValue = currentValue;
   }
 }
 
