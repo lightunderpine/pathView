@@ -11,6 +11,7 @@ int pedestorianNum = fileNames.length; // 歩行者の数
 Pedestorian[] aPedestorian = new Pedestorian[pedestorianNum];
 
 // Beacon 設定 
+BufferedReader beaconPosition;
 int beaconNum = 10; //設置する Beacon の数
 int detectRegion = 30; //Beacon の検出半径
 Beacon[] aBeacon = new Beacon[beaconNum];
@@ -21,21 +22,30 @@ Chart[] aChart = new Chart[beaconNum];
 //-------------------------------------------------------
 void setup() {
   size(1200, 510);
-  ellipseMode(CENTER_RADIUS);
+  ellipseMode(RADIUS);
   font = createFont("FFScala-32.vlw", 32); 
+
+  beaconPosition = createReader("beaconPosition.txt");
+//for (int i=0;i<10;i++){
+//  println("beacon"+i);
+//  int line = beaconPosition.readLine;
+//  
+//}
 
 
 
   // beacon[0] は規定の初期値に設定（テスト用）
-  aBeacon[0]=new Beacon(250, 380, "BEACON0");
-  aPedestorian[0]=new Pedestorian(20, 200, fileNames[0]);
-  aChart[0] = new Chart(280, 95, aBeacon[0]);
-  aChart[0].init(610, 0, aBeacon[0].myColor);
+//  aBeacon[0]=new Beacon(250, 380, "BEACON0");
+//  aPedestorian[0]=new Pedestorian(20, 200, fileNames[0]);
+//  aChart[0] = new Chart(280, 95, aBeacon[0]);
+//  aChart[0].init(610, 0, aBeacon[0].myColor);
 
   //ビーコンとグラフの初期化 (beacon[0]以外の初期値は現時点ではランダム)
-  for (int i=1;i<beaconNum;i++) {
-    int sampleX = int(40+random(520));
-    int sampleY = int(100+random(280));
+  for (int i=0;i<beaconNum;i++) {
+    String line = beaconPosition.readLine();
+    String[] col = split(line, ',');
+    int sampleX =int(col[0]);//= int(40+random(520));
+    int sampleY =int(col[1]);//= int(100+random(280));
     aBeacon[i] = new Beacon(sampleX, sampleY, "BEACON"+i);
     aChart[i] = new Chart(280, 95, aBeacon[i]);
   }
