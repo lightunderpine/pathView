@@ -6,7 +6,10 @@ String[] fileNames  = {
 int count = 0;
 PFont font;
 String myLine;
-
+boolean isPathDisplay = false;
+PImage mapImage;
+//PImage man;
+  
 // 歩行者設定
 int pedestorianNum = fileNames.length; // 歩行者の数
 Pedestorian[] aPedestorian = new Pedestorian[pedestorianNum];
@@ -20,11 +23,13 @@ Chart[] aChart = new Chart[beaconNum];
 
 
 
+
 //-------------------------------------------------------
 void setup() {
   size(1200, 510);
   ellipseMode(RADIUS);
   font = createFont("FFScala-32.vlw", 32); 
+  mapImage = loadImage("takatsuki.png");
 
   // beacon の位置を読み込む 
   beaconPosition = createReader("beaconPosition.txt");
@@ -41,8 +46,6 @@ void setup() {
     }
     if (myLine!=null) {   
       String[] col = split(myLine, ',');
-//      int sampleX =int(col[0]);
-//      int sampleY =
       aBeacon[i] = new Beacon(int(col[0]), int(col[1]), i);
       aChart[i] = new Chart(280, 95, aBeacon[i]);
     }
@@ -62,14 +65,15 @@ void setup() {
 
 //-----------------------------------------
 void draw() {
-
+    mapDraw();
   //pedestorian
   for (int i=0; i<pedestorianNum; i++) {
     aPedestorian[i].update();
   }
 
   //beacons
-  for (int i=0; i<beaconNum; i++) {
+
+    for (int i=0; i<beaconNum; i++) {
     int encount = 0;
     for (int j=0; j<pedestorianNum; j++) {
       if (isActive(aBeacon[i], aPedestorian[j])) {

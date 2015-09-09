@@ -2,8 +2,9 @@
 void panelLocate(int _beaconNum) {
   
   // draw a base map
-  PImage mapImage = loadImage("takatsuki.png");
+//  PImage mapImage = loadImage("takatsuki.png");
   image(mapImage, 0, 0);
+ // mapDraw();
 
   // draw chart pannels
   for (int i=0; i< _beaconNum; i++) {
@@ -18,3 +19,8 @@ void panelLocate(int _beaconNum) {
   }
 }
 
+void mapDraw(){
+  if(!isPathDisplay){
+  image(mapImage, 0, 0);
+  }
+}

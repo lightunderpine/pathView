@@ -18,11 +18,19 @@ class Pedestorian {
   // 表示（引数は色）
   void display(color _myColor) {
     myColor = _myColor;
-    strokeWeight(0);
+    strokeWeight(1);
     fill(myColor);
-    ellipse(posX, posY, 2, 2);
+    if(isPathDisplay){
+      stroke(0);
+      ellipse(posX, posY, 2, 2);
+    } else {    
+    ellipse(posX, posY-10, 3, 3);
+    line(posX,posY-7, posX, posY);
+    line(posX-4, posY-3, posX+4, posY-3);
+    line(posX-2, posY+6, posX, posY);
+    line(posX+2, posY+6, posX, posY);
+    }
   }
-
 
   // ファイルから１行読んで歩行者座標を更新
   void update() {

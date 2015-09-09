@@ -19,6 +19,7 @@ class Beacon {
 
 
   void display(int encount) {
+    // BeaconAcitivateRegion
 //    strokeWeight(1);
 //    fill(255, 255 - 40*encount, 255-40*encount);
 //    ellipse(posX, posY, detectRegion, detectRegion);

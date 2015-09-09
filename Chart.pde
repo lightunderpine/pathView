@@ -13,8 +13,7 @@ class Chart {
     prevValue = 90;
   }
 
-//  void init (int _posX, int _posY, color _myColor) {
-    void init (int _posX, int _posY) {
+  void init (int _posX, int _posY) {
     posX = _posX;
     posY = _posY;
     pushMatrix();
@@ -34,7 +33,7 @@ class Chart {
     translate(posX, posY);
     stroke(255, 0, 0);
     strokeWeight(2);
-    int currentValue = max(90 - _value*15,0);
+    int currentValue = max(90 - _value*15, 0);
     line(int((_count-1)*0.1)+10, prevValue, int(_count*0.1)+10, currentValue);
     stroke(0);
     popMatrix();
