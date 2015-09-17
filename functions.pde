@@ -1,9 +1,8 @@
-// isActive(Beacon, Pedestorian) -> T or F
+// isActive(Beacon, Pedestorian) -> True or False
 boolean isActive(Beacon _beacon, Pedestorian _pedestorian) {
   if (distance(_beacon, _pedestorian) < detectRegion) {
     return true;
-  } 
-  else {
+  } else {
     return false;
   }
 }
@@ -12,8 +11,15 @@ boolean isActive(Beacon _beacon, Pedestorian _pedestorian) {
 // distance(Beacon, Pedestorian) -> float
 float distance(Beacon _beacon, Pedestorian _pedestorian) {
   return sqrt(
-  (_pedestorian.posX - _beacon.posX) * (_pedestorian.posX - _beacon.posX)
-    + (_pedestorian.posY - _beacon.posY) * (_pedestorian.posY - _beacon.posY)
-    );
+  pow(_pedestorian.posX - _beacon.posX, 2)
+    + pow(_pedestorian.posY - _beacon.posY, 2));
+}
+
+// distance between two beacons
+// distance(Beacon, Beacon) -> float
+float distance(Beacon _beacon1, Beacon _beacon2) {
+  return sqrt(
+  pow(_beacon1.posX - _beacon2.posX, 2)
+    + pow(_beacon1.posY - _beacon2.posY, 2));
 }
 

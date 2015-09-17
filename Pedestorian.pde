@@ -12,7 +12,7 @@ class Pedestorian {
     posX = _X;
     posY = _Y;
     reader = createReader(_dataName);
-    println(">>"+ reader);
+    //println(">>"+ reader);
   }
 
   // 表示（引数は色）
@@ -21,9 +21,11 @@ class Pedestorian {
     strokeWeight(1);
     fill(myColor);
     if(isPathDisplay){
+      //draw a point
       stroke(0);
       ellipse(posX, posY, 2, 2);
-    } else {    
+    } else {  
+    // draw a lineman  
     ellipse(posX, posY-10, 3, 3);
     line(posX,posY-7, posX, posY);
     line(posX-4, posY-3, posX+4, posY-3);
@@ -49,7 +51,7 @@ class Pedestorian {
     } 
     else {  
       String[] col = split(line, ','); // , で分割
-      println(">> col:"+ col[0]+ col[1]);
+      //println(">> col:"+ col[0]+ col[1]);
       if (col.length==2) {
         //整数に変換
         posX = int(col[0]);
@@ -69,5 +71,12 @@ class Pedestorian {
         println(line);
       }// , なし
     }
+  }
+  void lineman(int _posX, int _posY){
+        ellipse(_posX, _posY-10, 3, 3);
+    line(_posX,   _posY-7, _posX,   _posY);
+    line(_posX-4, _posY-3, _posX+4, _posY-3);
+    line(_posX-2, _posY+6, _posX,   _posY);
+    line(_posX+2, _posY+6, _posX,   _posY);
   }
 }
