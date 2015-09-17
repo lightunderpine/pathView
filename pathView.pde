@@ -61,10 +61,8 @@ Pedestorian[] aPedestorian = new Pedestorian[pedestorianNum];
 // Beacon 設定 
 BufferedReader beaconPosition;
 int beaconNum = 10; //設置する Beacon の数
-int detectRegion = 25; //Beacon の検出半径
 Beacon[] aBeacon = new Beacon[beaconNum];
 Chart[] aChart = new Chart[beaconNum];
-
 Network network;
 
 

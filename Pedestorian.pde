@@ -26,11 +26,7 @@ class Pedestorian {
       ellipse(posX, posY, 2, 2);
     } else {  
     // draw a lineman  
-    ellipse(posX, posY-10, 3, 3);
-    line(posX,posY-7, posX, posY);
-    line(posX-4, posY-3, posX+4, posY-3);
-    line(posX-2, posY+6, posX, posY);
-    line(posX+2, posY+6, posX, posY);
+    lineman(posX, posY);
     }
   }
 

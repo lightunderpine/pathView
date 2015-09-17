@@ -4,6 +4,7 @@ class Beacon {
   int posY;
   int ID;
   String name;
+  private int detectRegion = 25; //Beacon の検出半径
   private int beaconRadius = 8; //Beacon 本体の半径
   private int beaconRelationRadius = 15;
   private int beaconRelationDegree = 0;
@@ -15,22 +16,22 @@ class Beacon {
     posX = _posX;
     posY = _posY;
     ID = _ID;
-  name = "beacon"+ID;
+    name = "beacon"+ID;
   }
 
   //検出範囲にいる歩行者の数を返す
-  int pedestorianDetect(){
+  int pedestorianDetect() {
     int currentDetect = 0;
-        for (int i=0; i<pedestorianNum; i++) {
-      if (isActive(this, aPedestorian[i])) {
+    for (int i=0; i<pedestorianNum; i++) {
+      if (isActive(this, aPedestorian[i], detectRegion)) {
         currentDetect++;
       }
     }
     return currentDetect;
   }
-    
-    
-   
+
+
+
 
 
   void display(int encount) {
