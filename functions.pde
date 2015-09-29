@@ -1,4 +1,4 @@
-// isActive(Beacon, Pedestorian) -> True or False
+// isActive(Beacon, Pedestorian, radius) -> True or False
 boolean isActive(Beacon _beacon, Pedestorian _pedestorian, int _detectRegion) {
   if (distance(_beacon, _pedestorian) < _detectRegion) {
     return true;

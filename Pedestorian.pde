@@ -22,7 +22,7 @@ class Pedestorian {
     fill(myColor);
     if(isPathDisplay){
       //draw a point
-      stroke(0);
+      //stroke(0);
       ellipse(posX, posY, 2, 2);
     } else {  
     // draw a lineman  

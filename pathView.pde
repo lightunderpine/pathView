@@ -51,6 +51,7 @@ int count = 0;
 PFont font;
 String myLine;
 boolean isPathDisplay = false;
+boolean isNetworkDisplay = true;
 PImage mapImage;
 //PImage man;
 
@@ -74,7 +75,8 @@ void setup() {
   ellipseMode(RADIUS);
   font = createFont("FFScala-32.vlw", 32); 
   mapImage = loadImage("takatsuki.png");
-  network = new Network(10);
+  
+  network = new Network(beaconNum);
 
   vinit();
 
@@ -88,41 +90,26 @@ void setup() {
     aPedestorian[i] = new Pedestorian(sampleX, sampleY, fileNames[i]);
     aPedestorian[i].display(color(0, 255, 255));
   }
+  
   network.init();
 }
 
 //-----------------------------------------
 void draw() {
   mapDraw();
+  
   //pedestorian
   for (int i=0; i<pedestorianNum; i++) {
     aPedestorian[i].update();
   }
 
-  for (int i=0; i<beaconNum; i++) {
-    for (int j=i+1; j<beaconNum; j++) {
-      //      if ((relation[i][j]+relation[j][i]) != 0) {
-      if (network.relation[i][j]!=0.0) {
-        strokeWeight(round(pow(network.relation[i][j], 2)*5));
-        line(aBeacon[i].posX, aBeacon[i].posY, aBeacon[j].posX, aBeacon[j].posY);
-        fill(0);
-        textFont(font, 14);
-        text(network.relation[i][j], (aBeacon[i].posX + aBeacon[j].posX)/2, (aBeacon[i].posY + aBeacon[j].posY)/2);
-      }
-    }
-  }
-
+  // network no hyouji
+  network.display();
+  
 
   //beacons
   for (int i=0; i<beaconNum; i++) {
-    //int encount = 0;
-/*
-    for (int j=0; j<pedestorianNum; j++) {
-      if (isActive(aBeacon[i], aPedestorian[j])) {
-        encount++;
-      }
-    }
-    */
+
     //ビーコンの検出範囲内にいる人の数を取得する
     int encount = aBeacon[i].pedestorianDetect();
     for (int j=0; j<aBeacon.length; j++) {

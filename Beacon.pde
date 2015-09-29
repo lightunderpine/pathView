@@ -31,9 +31,6 @@ class Beacon {
   }
 
 
-
-
-
   void display(int encount) {
     //    // BeaconAcitivateRegion
     //    strokeWeight(1);
